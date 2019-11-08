@@ -4,7 +4,7 @@ const resolver = {
     Query: {
         getTodos: (_, args) => {
             return models.Todo.findAll().then(todos => {
-                return todos;
+                return todos.map(todo => todo.dataValues);
             }).catch(err => {
                 throw err;
             })
@@ -16,7 +16,7 @@ const resolver = {
                 text: args.text,
                 completed: false
             }).then(todo => {
-                return todo;
+                return todo.dataValues;
             }).catch(err => {
                 throw err;
             })

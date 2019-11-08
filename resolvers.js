@@ -3,7 +3,7 @@ const models = require("./models");
 const resolver = {
     Query: {
         getTodos: (_, args) => {
-            return models.Todo.findAll().then(todos => {
+            return models.todo.findAll().then(todos => {
                 return todos.map(todo => todo.dataValues);
             }).catch(err => {
                 throw err;
@@ -12,7 +12,7 @@ const resolver = {
     },
     Mutation: {
         createTodo: (_, args) => {
-            return models.Todo.create({
+            return models.todo.create({
                 text: args.text,
                 completed: false
             }).then(todo => {

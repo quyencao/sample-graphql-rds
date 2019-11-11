@@ -2,21 +2,21 @@ const models = require("./models");
 
 const resolver = {
     Query: {
-        getTodos: (_, args) => {
-            return models.todo.findAll().then(todos => {
-                return todos.map(todo => todo.dataValues);
+        getUsers: (_, args) => {
+            return models.User.findAll().then(users => {
+                return users.map(user => user.dataValues);
             }).catch(err => {
                 throw err;
             })
         }
     },
     Mutation: {
-        createTodo: (_, args) => {
-            return models.todo.create({
-                text: args.text,
-                completed: false
-            }).then(todo => {
-                return todo.dataValues;
+        register: (_, args) => {
+            return models.User.create({
+                email: args.email,
+                password: args.password
+            }).then(user => {
+                return user.dataValues;
             }).catch(err => {
                 throw err;
             })

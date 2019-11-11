@@ -7,7 +7,7 @@ type Mutation {
 }
 
 type Query {
-  getUsers: [User!]
+  getCurrentUser: User!
 }
 
 type Token {

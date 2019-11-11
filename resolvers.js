@@ -18,7 +18,7 @@ function verifyJWTToken(token) {
 
 const resolver = {
     Query: {
-        getCurrentUser: (_, args) => {
+        getCurrentUser: (_, args, { headers }) => {
             const token = headers.token || '';
 
             return verifyJWTToken(token)
